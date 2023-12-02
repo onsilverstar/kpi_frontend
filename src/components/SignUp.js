@@ -1,12 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function CreateUser() {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [first_name, setFirst_name] = useState("")
   const [last_name, setLast_name] = useState("")
+
+  const { handleSubmit, register, formState: { errors } } = useForm()
+  const navigate = useNavigate()
 
   const handleChangePassword = (e)=> {
     e.preventDefault()
@@ -26,9 +31,9 @@ function CreateUser() {
     e.preventDefault()
     setLast_name(e.target.value);
   }
-  const handleSubmit = () =>{
+  const handleOnSubmit = () =>{
     const data = {"first_name": first_name, "last_name": last_name, "email": email, "password": password}
-    fetch("http://44.212.67.79/createuser",
+    fetch("http://127.0.0.1:8000/createuser",
     {
       method: "POST",
       headers: {
@@ -37,34 +42,40 @@ function CreateUser() {
       body: JSON.stringify(data)
     })
     console.log(data)
+    navigate("/home")
   }
     return (
-    <Form>
+    <Form onSubmit={handleSubmit(handleOnSubmit)}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>First name</Form.Label>
-        <Form.Control type="text"  onChange={handleChangeFirst_name} />
+        <Form.Control type="text" placeholder="Enter first name" {...register("first_name", { required: true })} onChange={handleChangeFirst_name} />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Last name</Form.Label>
-        <Form.Control type="text" placeholder="Enter email" onChange={handleChangeLast_name} />
+        <Form.Control type="text" placeholder="Enter last name" {...register("last_name", { required: true })} onChange={handleChangeLast_name} />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" onChange={handleChangeEmail} />
+        <Form.Control type="email" placeholder="Enter email" {...register("email", { required: true })} onChange={handleChangeEmail} />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" onChange={handleChangePassword}/>
+        <Form.Control type="password" placeholder="Password" {...register("password", { required: true })} onChange={handleChangePassword}/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+      {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
+      </Form.Group> */}
+      <Button variant="primary" type="submit">
         Submit
       </Button>
+      {errors.first_name && <p>The reporting lead field is required.</p>}
+      {errors.last_name && <p>The manager field is required.</p>}
+      {errors.password && <p>The senior manager field is required.</p>}
+      {errors.email && <p>The external field is required.</p>}
+      {errors.director && <p>The director field is required.</p>}
     </Form>
   );
 }
