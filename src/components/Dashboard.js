@@ -24,8 +24,8 @@ const Dashboard = (props)=>
     {
         return parseFloat(x)
     }
-    const url = "http://127.0.0.1:8000/kpimeasures"
-    const url_kpi_metrics = "http://127.0.0.1:8000/kpimetrics"
+    const url = "https://kpiapi.mtandauza.com/kpimeasures"
+    const url_kpi_metrics = "https://kpiapi.mtandauza.com/kpimetrics"
 
     let getKPIMeasure = async () =>{
         let response = await fetch(url)

@@ -33,7 +33,7 @@ function Login(props) {
   const handleOnSubmit = async(e) =>{
     // e.preventDefault()
     const data = {"email": email, "password": password}
-    let response = await fetch("http://127.0.0.1:8000/login",
+    let response = await fetch("https://kpiapi.mtandauza.com/login",
     {
       method: "POST",
       headers: {

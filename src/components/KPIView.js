@@ -7,8 +7,8 @@ import * as dfd from "danfojs"
 import Plot from 'react-plotly.js'
 import NavigationBar from './Navbar';
 
-const url_kpi_metrics = "http://127.0.0.1:8000/kpidashboard"
-const url_kpi_measure = "http://127.0.0.1:8000/kpimeasures"
+const url_kpi_metrics = "https://kpiapi.mtandauza.com/kpidashboard"
+const url_kpi_measure = "https://kpiapi.mtandauza.com/kpimeasures"
 
 
 
@@ -64,7 +64,7 @@ const KPIView = (props) =>
                     }
 
         }
-        let update = await fetch("http://127.0.0.1:8000/editkpi",
+        let update = await fetch("https://kpiapi.mtandauza.com/editkpi",
         {
             method: "POST",
             headers: {
@@ -94,7 +94,7 @@ const KPIView = (props) =>
             score = weight
         }
 
-        let update = await fetch("http://127.0.0.1:8000/editkpi",
+        let update = await fetch("https://kpiapi.mtandauza.com/editkpi",
         {
             method: "POST",
             headers: {
@@ -115,7 +115,7 @@ const KPIView = (props) =>
 
     const getKPIMetric = async ()=>
     {
-        let response = await fetch("http://127.0.0.1:8000/searchkpi",
+        let response = await fetch("https://kpiapi.mtandauza.com/searchkpi",
         {
             method: "POST",
             headers: {
@@ -174,7 +174,7 @@ const KPIView = (props) =>
     }
 
     const getApprovalStatus = async()=>{
-        let status = await fetch("http://127.0.0.1:8000/validateedit",
+        let status = await fetch("https://kpiapi.mtandauza.com/validateedit",
         {
             method: "POST",
             headers: {
@@ -224,7 +224,7 @@ const KPIView = (props) =>
         let status = await getApprovalStatus()
         if (status["status"] == "Allowed")
         {
-            let result = await fetch("http://127.0.0.1:8000/editkpi",
+            let result = await fetch("https://kpiapi.mtandauza.com/editkpi",
             {
                 method: "POST",
                 headers: {

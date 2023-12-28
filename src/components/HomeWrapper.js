@@ -38,7 +38,7 @@ const HomeWrapper = (props)=>{
 
     const getLoggedStatus = async(token)=>
     {
-        let response = await fetch("http://127.0.0.1:8000/authuser",
+        let response = await fetch("https://kpiapi.mtandauza.com/authuser",
                 {
                     method: "POST",
                     headers: {

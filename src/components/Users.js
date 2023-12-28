@@ -6,8 +6,7 @@ import NavigationBar from "./Navbar"
 
 
 
-const url_users = "http://127.0.0.1:8000/"
-
+const url_users = "https://kpiapi.mtandauza.com"
 
 const Users = (props) =>
 {

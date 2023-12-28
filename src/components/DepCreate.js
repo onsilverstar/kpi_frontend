@@ -26,7 +26,7 @@ function DepCreate(props) {
   const handleOnSubmit = async(e) =>{
     // e.preventDefault()
     const data = {"title": title}
-    let response = await fetch("http://127.0.0.1:8000/createdep",
+    let response = await fetch("https://kpiapi.mtandauza.com/createdep",
     {
       method: "POST",
       headers: {

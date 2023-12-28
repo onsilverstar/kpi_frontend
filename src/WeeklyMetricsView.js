@@ -23,7 +23,7 @@ const WeeklyMetricsView = (props) =>
 
 
     const getcurrData = async (id)=>{
-        let response = await fetch("http://127.0.0.1:8000/searchkpimeasure",
+        let response = await fetch("https://kpiapi.mtandauza.com/searchkpimeasure",
                 {
                     method: "POST",
                     headers: {
@@ -60,7 +60,7 @@ const WeeklyMetricsView = (props) =>
       }
 
       const updateKPIs = async()=>{
-        let data = await fetch("http://127.0.0.1:8000/kpiupdatemeasure")
+        let data = await fetch("https://kpiapi.mtandauza.com/kpiupdatemeasure")
         data = await data.json()
     }
     
@@ -68,7 +68,7 @@ const WeeklyMetricsView = (props) =>
         e.preventDefault()
         updateKPIs()
         const data = currData
-        fetch("http://127.0.0.1:8000/editkpimeasure",
+        fetch("https://kpiapi.mtandauza.com/editkpimeasure",
         {
           method: "POST",
           headers: {

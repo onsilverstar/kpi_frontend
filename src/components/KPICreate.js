@@ -152,14 +152,14 @@ const KPICreate = (props) =>
 
       const getUsers = async ()=>
     {
-        let response = await fetch("http://127.0.0.1:8000/")
+        let response = await fetch("https://kpiapi.mtandauza.com/")
         let result = await response.json()
         setusers(result)
     }
 
     const getDepartments = async ()=>
     {
-        let response = await fetch("http://127.0.0.1:8000/department")
+        let response = await fetch("https://kpiapi.mtandauza.com/department")
         let result = await response.json()
         setdepartments(result)
     }
@@ -197,7 +197,7 @@ const KPICreate = (props) =>
         data["stage"] = "reporting_lead"
         console.log(data)
         console.log(currDataUsers)
-        fetch("http://127.0.0.1:8000/createkpi",
+        fetch("https://kpiapi.mtandauza.com/createkpi",
         {
           method: "POST",
           headers: {
@@ -209,7 +209,7 @@ const KPICreate = (props) =>
                 for(let i=0; i<currDataUsers.length; i++)
         {
             currDataUsers[i]["kpi"]= data["guid"]
-            fetch("http://127.0.0.1:8000/addusertokpi",
+            fetch("https://kpiapi.mtandauza.com/addusertokpi",
             {
               method: "POST",
               headers: {

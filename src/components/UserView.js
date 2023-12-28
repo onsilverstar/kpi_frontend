@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import NavigationBar from './Navbar';
 
-const url_users = "http://127.0.0.1:8000/"
+const url_users = "https://kpiapi.mtandauza.com/"
 
 
 
@@ -36,7 +36,7 @@ const UserView = (props) =>
 
 
     const getUserData = async (id)=>{
-        let response = await fetch("http://127.0.0.1:8000/searchuser",
+        let response = await fetch("https://kpiapi.mtandauza.com/searchuser",
                 {
                     method: "POST",
                     headers: {
@@ -79,7 +79,7 @@ const UserView = (props) =>
       const handleSubmit = (e) =>{
         e.preventDefault()
         const data = currData
-        fetch("http://127.0.0.1:8000/edituser",
+        fetch("https://kpiapi.mtandauza.com/edituser",
         {
           method: "POST",
           headers: {

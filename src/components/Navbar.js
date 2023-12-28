@@ -34,7 +34,7 @@ const handleSubmit = (e)=>
 
   const handleStartYear = (e)=>{
     e.preventDefault()
-    fetch("http://127.0.0.1:8000/createkpimeasuretodate")
+    fetch("https://kpiapi.mtandauza.com/createkpimeasuretodate")
     notify(e)
   }
 

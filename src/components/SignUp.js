@@ -33,7 +33,7 @@ function CreateUser() {
   }
   const handleOnSubmit = () =>{
     const data = {"first_name": first_name, "last_name": last_name, "email": email, "password": password}
-    fetch("http://127.0.0.1:8000/createuser",
+    fetch("https://kpiapi.mtandauza.com/createuser",
     {
       method: "POST",
       headers: {
